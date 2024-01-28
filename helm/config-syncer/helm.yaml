@@ -5,9 +5,8 @@ metadata:
   name: helm-repo-config-syncer
   namespace: flux-system
 spec:
-  type: "oci"
   interval: 5m0s
-  url: oci://ghcr.io/appscode-charts/config-syncer
+  url: https://charts.appscode.com/stable/
 ---
 apiVersion: v1
 kind: Namespace
