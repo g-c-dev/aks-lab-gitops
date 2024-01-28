@@ -32,8 +32,4 @@ spec:
   releaseName: config-syncer
   targetNamespace: config-syncer
   values: {}
-  valuesFrom:
-    - kind: ConfigMap
-      name: external-dns-values
-      optional: true
 
