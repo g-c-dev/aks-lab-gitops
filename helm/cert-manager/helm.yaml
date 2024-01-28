@@ -29,8 +29,8 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: helm-repo-cert-manager
-  releaseName: external-dns
-  targetNamespace: external-dns
+  releaseName: cert-manager
+  targetNamespace: cert-manager
   values:
     installCRDs: true
     startupapicheck:
