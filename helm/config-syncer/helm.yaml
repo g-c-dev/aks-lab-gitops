@@ -25,7 +25,7 @@ spec:
   chart:
     spec:
       chart: config-syncer
-      version: 'v0.14.5'
+      version: 'v0.13.2'
       sourceRef:
         kind: HelmRepository
         name: helm-repo-config-syncer
