@@ -18,6 +18,16 @@ metadata:
   labels:
     kubernetes.io/metadata.name: external-dns
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-external-dns
+  namespace: external-dns
+  labels:
+    azure.workload.identity/use: "true"
+  annotations:
+    azure.workload.identity/client-id: ${dnsManagementClientId:=notFound}
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -34,9 +44,15 @@ spec:
         name: helm-repo-external-dns
   releaseName: external-dns
   targetNamespace: external-dns
-  values: {}
-  valuesFrom:
-    - kind: ConfigMap
-      name: external-dns-values
-      optional: true
-
+  values:
+    serviceAccount:
+      annotations:
+        azure.workload.identity/client-id: ${dnsManagementClientId:=notProvided}
+      labels:
+        azure.workload.identity/use: "true"
+    azure:
+      cloud: azure
+      resourceGroup: ${dnsManagementAzureResourceGroup:=notProvided}
+      tenantId: ${azureTenantId:=notProvided}
+      subscriptionId: ${azureSubscriptionId:=notProvided}
+      userAssignedIdentityID: ${dnsManagementClientId:=notProvided}
