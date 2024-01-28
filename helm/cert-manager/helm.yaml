@@ -28,7 +28,7 @@ spec:
       version: 'v1.13.3'
       sourceRef:
         kind: HelmRepository
-        name: helm-repo-external-dns
+        name: helm-repo-cert-manager
   releaseName: external-dns
   targetNamespace: external-dns
   values:
