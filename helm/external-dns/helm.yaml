@@ -33,14 +33,14 @@ spec:
   targetNamespace: external-dns
   values:
     provider: azure
+    podLabels:
+      azure.workload.identity/use: "true"
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${dnsManagementClientId:=notProvided}
       labels:
         azure.workload.identity/use: "true"
     azure:
-      useManagedIdentityExtension: true
       resourceGroup: ${dnsManagementAzureResourceGroup:=notProvided}
       tenantId: ${azureTenantId:=notProvided}
       subscriptionId: ${azureSubscriptionId:=notProvided}
-      userAssignedIdentityID: ${dnsManagementClientId:=notProvided}
