@@ -1,2 +1,2 @@
 # aks-lab-gitops
-GitOps Configuraiton for AKS Lab
+GitOps Configuration for AKS Lab
