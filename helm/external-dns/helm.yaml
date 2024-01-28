@@ -7,8 +7,6 @@ metadata:
 spec:
   interval: 5m0s
   url: https://charts.bitnami.com/bitnami
-  secretRef:
-    name: default
 ---
 apiVersion: v1
 kind: Namespace
@@ -51,6 +49,7 @@ spec:
       labels:
         azure.workload.identity/use: "true"
     azure:
+      useManagedIdentityExtension: true
       resourceGroup: ${dnsManagementAzureResourceGroup:=notProvided}
       tenantId: ${azureTenantId:=notProvided}
       subscriptionId: ${azureSubscriptionId:=notProvided}
