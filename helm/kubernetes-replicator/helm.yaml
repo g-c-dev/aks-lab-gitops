@@ -2,34 +2,34 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: helm-repo-config-syncer
+  name: helm-repo-kubernetes-replicator
   namespace: flux-system
 spec:
   interval: 5m0s
-  url: https://charts.appscode.com/stable/
+  url: https://helm.mittwald.de
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: config-syncer
+  name: kubernetes-replicator
   labels:
-    kubernetes.io/metadata.name: config-syncer
+    kubernetes.io/metadata.name: kubernetes-replicator
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: config-syncer-installation
+  name: kubernetes-replicator-installation
   namespace: flux-system
 spec:
   interval: 5m0s
   chart:
     spec:
-      chart: config-syncer
-      version: 'v0.13.2'
+      chart: kubernetes-replicator
+      version: '2.9.*'
       sourceRef:
         kind: HelmRepository
-        name: helm-repo-config-syncer
-  releaseName: config-syncer
-  targetNamespace: config-syncer
+        name: helm-repo-kubernetes-replicator
+  releaseName: kubernetes-replicator
+  targetNamespace: kubernetes-replicator
   values: {}
 
