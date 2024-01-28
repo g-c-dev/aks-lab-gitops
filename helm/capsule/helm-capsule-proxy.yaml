@@ -32,10 +32,10 @@ spec:
       enabled: true
       className: traefik
       annotations:
-        cert-manager.io/cluster-issuer: lets-encrypt
-        kubernetes.io/ingress.allow-http: false
-        traefik.ingress.kubernetes.io/router.tls: true
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: "lets-encrypt"
+        kubernetes.io/ingress.allow-http: "false"
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - host: "capsule.${clusterFQDN:=notProvided}"
           paths:
