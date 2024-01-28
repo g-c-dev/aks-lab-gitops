@@ -44,3 +44,4 @@ spec:
       resourceGroup: ${dnsManagementAzureResourceGroup:=notProvided}
       tenantId: ${azureTenantId:=notProvided}
       subscriptionId: ${azureSubscriptionId:=notProvided}
+      useWorkloadIdentityExtension: true
