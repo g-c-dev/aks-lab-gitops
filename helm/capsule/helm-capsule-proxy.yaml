@@ -29,6 +29,7 @@ spec:
       generateCertificates: false
       enableSSL: false
       ingress:
+        enabled: true
         className: traefik
         annotations:
           cert-manager.io/cluster-issuer: lets-encrypt
