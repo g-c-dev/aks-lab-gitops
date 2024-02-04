@@ -23,10 +23,11 @@ spec:
   releaseName: capsule
   targetNamespace: capsule
   values:
-    options:
-      forceTenantPrefix: true
-      generateCertificates: false
-      capsuleUserGroups:
-        # https://portal.azure.com/#view/Microsoft_AAD_IAM/GroupDetailsMenuBlade/~/Overview/groupId/ac798281-c2d0-4114-8c41-d0cc0f830bb6/menuId/
-        - "ac798281-c2d0-4114-8c41-d0cc0f830bb6"
+    manager:
+      options:
+        forceTenantPrefix: true
+        generateCertificates: false
+        capsuleUserGroups:
+          # https://portal.azure.com/#view/Microsoft_AAD_IAM/GroupDetailsMenuBlade/~/Overview/groupId/ac798281-c2d0-4114-8c41-d0cc0f830bb6/menuId/
+          - "ac798281-c2d0-4114-8c41-d0cc0f830bb6"
 
