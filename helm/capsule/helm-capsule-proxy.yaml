@@ -1,4 +1,13 @@
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: helm-repo-clastix-capsule-proxy
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  url: https://clastix.github.io/charts
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -19,7 +28,7 @@ spec:
       version: '0.5.0'
       sourceRef:
         kind: HelmRepository
-        name: helm-repo-clastix
+        name: helm-repo-clastix-capsule-proxy
   releaseName: capsule-proxy
   targetNamespace: capsule-proxy
   values:

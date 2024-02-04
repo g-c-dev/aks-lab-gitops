@@ -1,4 +1,13 @@
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: helm-repo-clastix-capsule
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  url: oci://ghcr.io/projectcapsule/charts/capsule
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -16,10 +25,10 @@ spec:
   chart:
     spec:
       chart: capsule
-      version: '0.4.6'
+      version: '0.6.0'
       sourceRef:
-        kind: HelmRepository
-        name: helm-repo-clastix
+        kind: OCIRepository
+        name: helm-repo-clastix-capsule
   releaseName: capsule
   targetNamespace: capsule
   values:
