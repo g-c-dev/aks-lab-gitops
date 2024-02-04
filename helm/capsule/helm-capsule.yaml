@@ -28,7 +28,7 @@ spec:
       chart: capsule
       version: '0.6.0'
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: helm-repo-clastix-capsule
   releaseName: capsule
   targetNamespace: capsule
