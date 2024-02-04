@@ -10,7 +10,7 @@ metadata:
   labels:
     tenant-owner: "team-alice"
     tenant-cost-center: "c12345"
-  name: team-alice-tenant01
+  name: app-alice
 spec:
   ingressOptions:
     allowedClasses:
@@ -86,6 +86,7 @@ spec:
         meta.g-c.dev/tenant-name: team-alice-tenant01
         meta.g-c.dev/tenant-owner: team-alice
       labels:
+        tenant-name: "app-alice"
         tenant-owner: "team-alice"
         tenant-cost-center: "c12345"
     allowedServices:
