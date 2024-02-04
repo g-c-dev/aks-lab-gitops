@@ -1,0 +1,98 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: Tenant
+metadata:
+  annotations:
+    meta.g-c.dev/slack-channel: team-bob-notifications
+    meta.g-c.dev/tenant-name: team-bob-tenant01
+    meta.g-c.dev/tenant-owner: team-bob
+    # team alice group uuid
+    meta.g-c.dev/tenant-owner-uuid: "05e27ec5-27f7-4bf6-b269-f4f53cf31f34"
+  labels:
+    tenant-owner: "team-bob"
+    tenant-cost-center: "c12345"
+  name: app-bob
+spec:
+  ingressOptions:
+    allowedClasses:
+      allowed:
+        - traefik
+      matchLabels:
+        app.kubernetes.io/name: traefik
+    allowedHostnames:
+      allowedRegex: ^.${clusterFQDN:=notProvided}$
+    hostnameCollisionScope: Cluster
+  limitRanges:
+    items:
+      - limits:
+          - default:
+              cpu: 500m
+              memory: 128Mi
+            defaultRequest:
+              cpu: 500m
+              memory: 128Mi
+            type: Container
+  namespaceOptions:
+    quota: 3
+    additionalMetadata:
+      annotations:
+        meta.g-c.dev/slack-channel: team-bob-notifications
+        meta.g-c.dev/tenant-name: team-bob-tenant01
+        meta.g-c.dev/tenant-owner: team-bob
+      labels:
+        tenant-owner: "team-bob"
+        tenant-cost-center: "c12345"
+  networkPolicies:
+    items:
+      - ingress:
+          - from:
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: ingress
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitoring
+        podSelector: { }
+        policyTypes:
+          - Ingress
+  owners:
+    - clusterRoles:
+        - admin
+        - capsule-namespace-deleter
+      kind: Group
+      # team bob group uuid
+      name: "6138c2de-2295-45d5-99e1-e69d1b26651e"
+      proxySettings:
+        - kind: StorageClasses
+          operations:
+            - List
+        - kind: Nodes
+          operations:
+            - List
+        - kind: IngressClasses
+          operations:
+            - List
+  resourceQuotas:
+    items:
+      - hard:
+          limits.cpu: 2000m
+          limits.memory: 4000Mi
+          requests.cpu: 1000m
+          requests.memory: 2000Mi
+    scope: Tenant
+  serviceOptions:
+    additionalMetadata:
+      annotations:
+        meta.g-c.dev/slack-channel: team-bob-notifications
+        meta.g-c.dev/tenant-name: team-bob-tenant01
+        meta.g-c.dev/tenant-owner: team-bob
+      labels:
+        tenant-name: "app-bob"
+        tenant-owner: "team-bob"
+        tenant-cost-center: "c12345"
+    allowedServices:
+      externalName: true
+      loadBalancer: false
+      nodePort: true
+  storageClasses:
+    matchLabels:
+      kubernetes.io/cluster-service: "true"
