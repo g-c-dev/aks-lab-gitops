@@ -79,6 +79,16 @@ spec:
           requests.cpu: 1000m
           requests.memory: 2000Mi
     scope: Tenant
+  podOptions:
+    additionalMetadata:
+      annotations:
+        meta.g-c.dev/slack-channel: team-alice-notifications
+        meta.g-c.dev/tenant-name: team-alice-tenant01
+        meta.g-c.dev/tenant-owner: team-alice
+      labels:
+        tenant-name: "app-alice"
+        tenant-owner: "team-alice"
+        tenant-cost-center: "c12345"
   serviceOptions:
     additionalMetadata:
       annotations:
