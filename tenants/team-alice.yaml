@@ -8,7 +8,7 @@ metadata:
     # team alice group uuid
     meta.g-c.dev/tenant-owner-uuid: "05e27ec5-27f7-4bf6-b269-f4f53cf31f34"
   labels:
-    tenant-owner: team-alice
+    tenant-owner: "team-alice"
     tenant-cost-center: "c12345"
   name: team-alice-tenant01
 spec:
@@ -39,7 +39,7 @@ spec:
         meta.g-c.dev/tenant-name: team-alice-tenant01
         meta.g-c.dev/tenant-owner: team-alice
       labels:
-        tenant-owner: team-alice
+        tenant-owner: "team-alice"
         tenant-cost-center: "c12345"
   networkPolicies:
     items:
@@ -59,9 +59,8 @@ spec:
         - admin
         - capsule-namespace-deleter
       kind: Group
-      name:
-        # team alice group uuid
-        - "05e27ec5-27f7-4bf6-b269-f4f53cf31f34"
+      # team alice group uuid
+      name: "05e27ec5-27f7-4bf6-b269-f4f53cf31f34"
       proxySettings:
         - kind: StorageClasses
           operations:
@@ -87,7 +86,7 @@ spec:
         meta.g-c.dev/tenant-name: team-alice-tenant01
         meta.g-c.dev/tenant-owner: team-alice
       labels:
-        tenant-owner: team-alice
+        tenant-owner: "team-alice"
         tenant-cost-center: "c12345"
     allowedServices:
       externalName: true
