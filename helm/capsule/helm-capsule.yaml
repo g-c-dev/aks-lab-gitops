@@ -24,6 +24,8 @@ spec:
   targetNamespace: capsule
   values:
     manager:
+      image:
+        tag: 'v0.5.0'
       options:
         forceTenantPrefix: true
         generateCertificates: false
