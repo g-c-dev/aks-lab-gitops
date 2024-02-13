@@ -1,0 +1,3 @@
+# name of the tenant
+tenantName: "test"
+blockDeletion: true

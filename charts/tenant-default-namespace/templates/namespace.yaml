@@ -1,0 +1,11 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: {{ .Values.tenantName }}-default
+  ownerReferences:
+    - apiVersion: capsule.clastix.io/v1beta2
+      blockOwnerDeletion: {{ .Values.blockDeletion }}
+      controller: true
+      kind: Tenant
+      name: {{ .Values.tenantName }}
+      uid: {{ (lookup "capsule.clastix.io/v1beta2" "Tenant" "" .Values.tenantName ).metadata.uid }}
