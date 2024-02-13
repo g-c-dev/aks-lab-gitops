@@ -26,16 +26,16 @@ spec:
   chart:
     spec:
       chart: capsule
-      version: '0.6.0'
+      version: '0.4.5'
       sourceRef:
         kind: HelmRepository
-        name: helm-repo-clastix-capsule
+        name: helm-repo-clastix-capsule-proxy
   releaseName: capsule
   targetNamespace: capsule
   values:
     manager:
       image:
-        tag: 'v0.5.0'
+        tag: 'v0.3.3'
       options:
         forceTenantPrefix: true
         generateCertificates: false
