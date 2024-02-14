@@ -5,8 +5,9 @@ metadata:
   name: helm-repo-clastix-capsule-proxy
   namespace: flux-system
 spec:
+  type: oci
   interval: 5m0s
-  url: https://clastix.github.io/charts
+  url: oci://ghcr.io/projectcapsule/charts
 ---
 apiVersion: v1
 kind: Namespace
