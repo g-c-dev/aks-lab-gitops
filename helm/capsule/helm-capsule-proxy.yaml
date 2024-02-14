@@ -33,6 +33,7 @@ spec:
   targetNamespace: capsule-proxy
   values:
     options:
+      authPreferredTypes: "BearerToken"
       disableCaching: true
       oidcUsernameClaim: oid
       generateCertificates: false
