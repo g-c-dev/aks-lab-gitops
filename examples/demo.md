@@ -50,6 +50,7 @@ users:
 EOT
 
 export KUBECONFIG=/tmp/alice/kubeconfig.yaml
+chmod 600 $KUBECONFIG
 k config set-context --current --namespace=app-alice-default
 ```
 
@@ -135,7 +136,7 @@ kubectl describe pod whoami
 
 ```shell 
 helm upgrade --install --create-namespace --namespace app-alice-default echo-server /Users/gchiesa/git/helm-echo-server
-kubectl get pod
+kubectl get ingress
 ```
 
 switch to bob
